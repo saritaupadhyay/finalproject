@@ -75,15 +75,10 @@ class PlayGame(Players):
 	def make_a_move(self):
 		who_plays_now = self.whose_turn()
 		print "It is now the %s's turn" % (who_plays_now) 
-		move_input_x = self.parse_input(raw_input ("x coordinate: "))
-		move_input_y = self.parse_input(raw_input ("y coordinate: "))
+		move_input_x = self.parse_input("x coordinate: ")
+		move_input_y = self.parse_input("y coordinate: ")
 		print "You have chosen spot (%s,%s)" % (move_input_x, move_input_y)
-		try:
-			grid[(move_input_x,move_input_y)]
-		except KeyError:
-			print "ERROR: Move must be within the grid"
-			self.make_a_move()
-		else:
+		if valid_move(move_input_x, move_input_y) == 
 			if grid[(move_input_x,move_input_y)] == " ":
 				grid[(move_input_x, move_input_y)] = self.player_name_abbr()
 				self.turn_count = self.turn_count + 1
@@ -92,17 +87,25 @@ class PlayGame(Players):
 				make_grid()
 		make_grid()
 
-	def parse_input(self, input):
+	def parse_input(self, question):
+		input = raw_input(question)
 		if input.lower() == "exit":
 			sys.exit()
 		try:
 			return int(input)
 		except ValueError:
 			print "ERROR: Not a valid input. Please type an integer that appears on the board."
+			self.parse.input(question)
 		else:
 			return int(input)
 			
 
+	def valid_move(x,y):
+		try:
+			grid[(move_input_x,move_input_y)]
+		except KeyError:
+			print "ERROR: Move must be within the grid"
+			self.make_a_move()
 
 
 
