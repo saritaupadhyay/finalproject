@@ -92,7 +92,7 @@ class PlayGame(Players):
 			else:
 				print "ERROR: There is already a piece in that location."
 				self.make_grid()
-		self.check_all_wins(move_input_x,move_input_y)
+		self.check_all_wins()
 		self.make_grid()
 
 	def parse_input(self, question):
@@ -116,44 +116,40 @@ class PlayGame(Players):
 			print "ERROR: Move must be within the grid"
 			self.make_a_move()
 
-	def check_all_wins(self,x,y):
-		if self.check_win_horizontal(x,y) or self.check_win_vertical(x,y) or self.check_win_diagonal(x,y) or self.check_win_diagonal_downslope(x,y) == True:
+	def check_all_wins(self):
+		if self.check_win_horizontal() or self.check_win_vertical() or self.check_win_diagonal() or self.check_win_diagonal_downslope() == True:
 			print "You won!"
 			sys.exit()
 		else:
 			pass
 
-	def check_win_horizontal(self,x,y):
+	def check_win_horizontal(self):
 		for x in range(1, num_cells-4):
 			for y in range(1, num_cells-4):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x+1, y)] == self.grid[(x+2, y)] == self.grid[(x+3,y)] == self.grid[(x+4,y)]):
-					return x
-				else:
-					pass
+					return True
+				
 					
-	def check_win_vertical(self,x,y):
+	def check_win_vertical(self):
 		for x in range(1, num_cells-4):
 			for y in range(1, num_cells-4):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x, y+1)] == self.grid[(x, y+2)] == self.grid[(x,y+3)] == self.grid[(x,y+4)]):
-					return x
-				else:
-					pass
+					return True
+				
 
-	def check_win_diagonal(self, x, y):
-		for x in range(1, num_cells-4):
-			for y in range(1, num_cells-4):
+	def check_win_diagonal(self):
+		for x in range(5, num_cells-4):
+			for y in range(5, num_cells-4):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x+1, y+1)] == self.grid[(x+2, y+2)] == self.grid[(x+3,y+3)] == self.grid[(x+4,y+4)]):
-					return x
-				else:
-					pass
+					return True
+				
 
-	def check_win_diagonal_downslope(self, x, y):
-		for x in range(1, num_cells-4):
+	def check_win_diagonal_downslope(self):
+		for x in range(5, num_cells):
 			for y in range(1, num_cells-4):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x-1, y+1)] == self.grid[(x-2, y+2)] == self.grid[(x-3,y+3)] == self.grid[(x-4,y+4)]):
-					return x
-				else:
-					pass						
+					return True
+										
 # play_game = PlayGame()
 # play_game.start_the_game()
 
