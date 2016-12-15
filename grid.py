@@ -92,6 +92,7 @@ class PlayGame(Players):
 			else:
 				print "ERROR: There is already a piece in that location."
 				self.make_grid()
+		self.check_all_wins(move_input_x,move_input_y)
 		self.make_grid()
 
 	def parse_input(self, question):
@@ -116,7 +117,7 @@ class PlayGame(Players):
 			self.make_a_move()
 
 	def check_all_wins(self,x,y):
-		if check_win_horizontal(x,y) or check_win_vertical(x,y) or check_win_diagonal(x,y) or check_win_diagonal_downslope(x,y) == y:
+		if self.check_win_horizontal(x,y) or self.check_win_vertical(x,y) or self.check_win_diagonal(x,y) or self.check_win_diagonal_downslope(x,y) == y:
 			print "You won!"
 			sys.exit()
 		else:
@@ -125,7 +126,7 @@ class PlayGame(Players):
 	def check_win_horizontal(self,x,y):
 		for x in range(num_cells-4):
 			for y in range(num_cells-4):
-				if(grid(x,y)!= '' and grid(x,y) == grid(x+1, y) == grid(x+2, y) == grid(x+3,y) == grid(x+4,y)):
+				if(self.grid(x,y)!= '' and self.grid(x,y) == self.grid(x+1, y) == self.grid(x+2, y) == self.grid(x+3,y) == self.grid(x+4,y)):
 					return x
 				else:
 					return y
@@ -134,7 +135,7 @@ class PlayGame(Players):
 	def check_win_vertical(self,x,y):
 		for x in range(num_cells-4):
 			for y in range(num_cells-4):
-				if(grid(x,y)!= '' and grid(x,y) == grid(x, y+1) == grid(x, y+2) == grid(x,y+3) == grid(x,y+4)):
+				if(self.grid(x,y)!= '' and self.grid(x,y) == self.grid(x, y+1) == self.grid(x, y+2) == self.grid(x,y+3) == self.grid(x,y+4)):
 					return x
 				else:
 					return y
@@ -142,7 +143,7 @@ class PlayGame(Players):
 	def check_win_diagonal(self, x, y):
 		for x in range(num_cells-4):
 			for y in range(num_cells):
-				if(grid(x,y)!= '' and grid(x,y) == grid(x+1, y+1) == grid(x+2, y+2) == grid(x+3,y+3) == grid(x+4,y+4)):
+				if(self.grid(x,y)!= '' and self.grid(x,y) == self.grid(x+1, y+1) == self.grid(x+2, y+2) == self.grid(x+3,y+3) == self.grid(x+4,y+4)):
 					return x
 				else:
 					return y
@@ -150,7 +151,7 @@ class PlayGame(Players):
 	def check_win_diagonal_downslope(self, x, y):
 		for x in range(num_cells-4):
 			for y in range(num_cells):
-				if(grid(x,y)!= '' and grid(x,y) == grid(x-1, y+1) == grid(x-2, y+2) == grid(x-3,y+3) == grid(x-4,y+4)):
+				if(self.grid(x,y)!= '' and self.grid(x,y) == self.grid(x-1, y+1) == self.grid(x-2, y+2) == self.grid(x-3,y+3) == self.grid(x-4,y+4)):
 					return x
 				else:
 					return y						
