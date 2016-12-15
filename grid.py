@@ -124,32 +124,32 @@ class PlayGame(Players):
 			pass
 
 	def check_win_horizontal(self,x,y):
-		for x in range(num_cells-4):
-			for y in range(num_cells-4):
+		for x in range(1, num_cells-4):
+			for y in range(1, num_cells-4):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x+1, y)] == self.grid[(x+2, y)] == self.grid[(x+3,y)] == self.grid[(x+4,y)]):
 					return x
 				else:
 					return y
 					
 	def check_win_vertical(self,x,y):
-		for x in range(num_cells-4):
-			for y in range(num_cells-4):
+		for x in range(1, num_cells-4):
+			for y in range(1, num_cells-4):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x, y+1)] == self.grid[(x, y+2)] == self.grid[(x,y+3)] == self.grid[(x,y+4)]):
 					return x
 				else:
 					return y
 
 	def check_win_diagonal(self, x, y):
-		for x in range(num_cells-4):
-			for y in range(num_cells-4):
+		for x in range(1, num_cells-4):
+			for y in range(1, num_cells-4):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x+1, y+1)] == self.grid[(x+2, y+2)] == self.grid[(x+3,y+3)] == self.grid[(x+4,y+4)]):
 					return x
 				else:
 					return y
 
 	def check_win_diagonal_downslope(self, x, y):
-		for x in range(num_cells-4):
-			for y in range(num_cells-4):
+		for x in range(1, num_cells-4):
+			for y in range(1, num_cells-4):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x-1, y+1)] == self.grid[(x-2, y+2)] == self.grid[(x-3,y+3)] == self.grid[(x-4,y+4)]):
 					return x
 				else:
