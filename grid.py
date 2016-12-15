@@ -21,7 +21,7 @@ class Grid(object):
 		if self.grid[(x,y)] == " ":
 			return "| (%s,%s) " % (self.format_number(x), self.format_number(y))
 		elif self.grid[(x,y)] == "b":
-			return "|    b    "
+			return "|    B    "
 		elif self.grid[(x,y)] == "w":
 			return "|    w    "
 		else:
@@ -43,8 +43,8 @@ class Grid(object):
 					sys.stdout.write("|\n")
 		sys.stdout.write(self.make_grid_line())			
 
-make_grid = Grid()
-make_grid.make_grid()
+# make_grid = Grid()
+# make_grid.make_grid()
 
 
 class Players(Grid):
@@ -52,6 +52,7 @@ class Players(Grid):
 		self.black_player = "Black Player"
 		self.white_player = "White Player"
 		self.turn_count = 0
+		super(Players, self).__init__()
 
 	def get_black_player_name(self):
 		return self.black_player
@@ -116,7 +117,7 @@ class PlayGame(Players):
 
 
 
-play_game = PlayGame()
-play_game.start_the_game()
+# play_game = PlayGame()
+# play_game.start_the_game()
 
 
