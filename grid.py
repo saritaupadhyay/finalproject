@@ -117,7 +117,7 @@ class PlayGame(Players):
 			self.make_a_move()
 
 	def check_all_wins(self,x,y):
-		if self.check_win_horizontal(x,y) or self.check_win_vertical(x,y) or self.check_win_diagonal(x,y) or self.check_win_diagonal_downslope(x,y) == y:
+		if self.check_win_horizontal(x,y) or self.check_win_vertical(x,y) or self.check_win_diagonal(x,y) or self.check_win_diagonal_downslope(x,y) == True:
 			print "You won!"
 			sys.exit()
 		else:
@@ -129,7 +129,7 @@ class PlayGame(Players):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x+1, y)] == self.grid[(x+2, y)] == self.grid[(x+3,y)] == self.grid[(x+4,y)]):
 					return x
 				else:
-					return y
+					pass
 					
 	def check_win_vertical(self,x,y):
 		for x in range(1, num_cells-4):
@@ -137,7 +137,7 @@ class PlayGame(Players):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x, y+1)] == self.grid[(x, y+2)] == self.grid[(x,y+3)] == self.grid[(x,y+4)]):
 					return x
 				else:
-					return y
+					pass
 
 	def check_win_diagonal(self, x, y):
 		for x in range(1, num_cells-4):
@@ -145,7 +145,7 @@ class PlayGame(Players):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x+1, y+1)] == self.grid[(x+2, y+2)] == self.grid[(x+3,y+3)] == self.grid[(x+4,y+4)]):
 					return x
 				else:
-					return y
+					pass
 
 	def check_win_diagonal_downslope(self, x, y):
 		for x in range(1, num_cells-4):
@@ -153,7 +153,7 @@ class PlayGame(Players):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x-1, y+1)] == self.grid[(x-2, y+2)] == self.grid[(x-3,y+3)] == self.grid[(x-4,y+4)]):
 					return x
 				else:
-					return y						
+					pass						
 # play_game = PlayGame()
 # play_game.start_the_game()
 
