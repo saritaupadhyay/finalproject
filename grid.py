@@ -138,16 +138,16 @@ class PlayGame(Players):
 				
 
 	def check_win_diagonal(self):
-		for x in range(5, num_cells-4):
-			for y in range(5, num_cells-4):
+		for x in range(1, num_cells-4):
+			for y in range(1, num_cells-4):
 				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x+1, y+1)] == self.grid[(x+2, y+2)] == self.grid[(x+3,y+3)] == self.grid[(x+4,y+4)]):
 					return True
 				
 
 	def check_win_diagonal_downslope(self):
-		for x in range(5, num_cells):
-			for y in range(1, num_cells-4):
-				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x-1, y+1)] == self.grid[(x-2, y+2)] == self.grid[(x-3,y+3)] == self.grid[(x-4,y+4)]):
+		for x in range(1, num_cells-4):
+			for y in range(5, num_cells):
+				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x+1, y-1)] == self.grid[(x+2, y-2)] == self.grid[(x+3,y-3)] == self.grid[(x+4,y-4)]):
 					return True
 										
 # play_game = PlayGame()
