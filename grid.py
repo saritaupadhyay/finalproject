@@ -126,12 +126,11 @@ class PlayGame(Players):
 	def check_win_horizontal(self,x,y):
 		for x in range(num_cells-4):
 			for y in range(num_cells-4):
-				if(self.grid[(x,y)]!= " " and self.grid](x,y)] == self.grid[(x+1, y)] == self.grid[(x+2, y)] == self.grid[(x+3,y)] == self.grid[(x+4,y)]):
+				if(self.grid[(x,y)]!= " " and self.grid[(x,y)] == self.grid[(x+1, y)] == self.grid[(x+2, y)] == self.grid[(x+3,y)] == self.grid[(x+4,y)]):
 					return x
 				else:
 					return y
 					
-
 	def check_win_vertical(self,x,y):
 		for x in range(num_cells-4):
 			for y in range(num_cells-4):
